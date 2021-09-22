@@ -2,7 +2,7 @@
 
 Base repository for B2 assessments and diagnostics.
 
-This repository requires and has been tested on Ruby v2.5.3 and is based on Rails 5.2.4.3.
+This repository requires and has been tested on Ruby v2.7.2 and is based on Rails 5.2.5
 
 RSpec and Shoulda-Matchers have been installed and set up.
 
@@ -11,10 +11,8 @@ RSpec and Shoulda-Matchers have been installed and set up.
 1. fork this repo
 2. clone your fork
 3. `git clone <paste_repo>`
-4. `cd b2-mid-mod`
+4. `cd <repo_name>`
 5. `bundle install`
-
-When you run `bundle exec rspec` you should have 0 tests.
 
 ## Instructions
 
@@ -26,10 +24,12 @@ When you run `bundle exec rspec` you should have 0 tests.
 
 ## Submission
 
-Once the time for the assessment is up, push your code to your fork and create a pull request to the `turingschool-examples` repository. Include the following:
+Once the time for the assessment is up (and not before), push your code to your fork and create a pull request to the `turingschool-examples` repository. Include the following:
 
 * Your Name
-* A reflection on how you felt you did with this challenge and what story you got through
+* How far you got through the user stories
+  * Please include any user stories you partially complete, for example "completed user stories 1 and 2, really close to completing 3"
+* A reflection on how you felt you did with this challenge
 
 ## Requirements
 
@@ -41,6 +41,60 @@ Once the time for the assessment is up, push your code to your fork and create a
 * No visual styling is required or expected
 * You do not need to test for or create any model validations.
 
+## Overview
+
+Community Garden is an app that tracks Gardens, Plots, and Plants.
+
+* Gardens have a name and an 'organic' column
+  * Ex: name: "Turing Community Garden", organic: true
+* Plots have a number, size, and a direction
+ 	* Ex: number: 25, size: "Large", direction: "East"
+* Plants have a name, description, and days to harvest.
+  * Ex: name: "Purple Beauty Sweet Bell Pepper", description: "Prefers rich, well draining soil.", days_to_harvest: 90
+* Gardens have many plots
+* Plots belong to a Garden
+* Plants can be in many Plots
+* Plots have many Plants
+
+Some of the initial migrations and model set up has been done for you.
+
 ## User Stories
 
-User stories will be released at the start of the assessment.
+```
+User Story 1, Plots Index Page
+As a visitor
+When I visit the plots index page ('/plots')
+I see a list of all plot numbers
+And under each plot number I see names of all that plot's plants
+```
+
+```
+User Story 2, Remove a Plant from a Plot
+As a visitor
+When I visit a plot's index page
+Next to each plant's name
+I see a link to remove that plant from that plot
+When I click on that link
+I'm returned to the plots index page
+And I no longer see that plant listed under that plot
+(Note: you should not destroy the plant record entirely)
+```
+
+```
+User Story 3, Garden's Plants
+As a visitor
+When I visit an garden's show page
+Then I see a list of plants that are included in that garden's plots
+And I see that this list is unique (no duplicate plants)
+And I see that this list only includes plants that take less than 100 days to harvest
+```
+
+## Extensions
+
+```
+Extension,
+As a visitor
+When I visit a garden's show page,
+Then I see the list of plants is sorted by the number of plants that appear in any of that garden's plots from most to least
+(Note: you should only make 1 database query to retrieve the sorted list of plants)
+```
