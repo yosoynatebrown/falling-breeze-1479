@@ -1,6 +1,4 @@
-# B2 Assessments
-
-Base repository for B2 assessments and diagnostics.
+# Community Garden
 
 This repository requires and has been tested on Ruby v2.7.2 and is based on Rails 5.2.5
 
@@ -13,14 +11,16 @@ RSpec and Shoulda-Matchers have been installed and set up.
 3. `git clone <paste_repo>`
 4. `cd <repo_name>`
 5. `bundle install`
+6. `rails db:{drop,create,migrate,seed}`
 
 ## Instructions
 
+* Spend up to 3 hours total working on this challenge.
+* Commit frequently, about every 15-30 minutes, in addition to committing each time you start and stop working on the challenge.
+* Push up your code at 9:00 AM (Mountain Time) on Friday, November 12 (not before!)
 * Work on this assessment independently. DO NOT discuss with anyone.
 * You are allowed to use any references including notes, Google, lesson plans, etc.
 * Read each story carefully before you start working.
-* Commit Frequently, about every 15 - 30 minutes
-* Push your code to your fork once the time is up (not before!)
 
 ## Submission
 
