@@ -1,7 +1,5 @@
 <h1><%= @garden.name%></h1>
 
-<% @garden.plots.each do |plot|%>
-  <% plot.plants.each do |plant| %>
+<% @garden.plants.each do |plant|%>
   <p><%= plant.name %></p>
-  <% end %>
 <% end %>
