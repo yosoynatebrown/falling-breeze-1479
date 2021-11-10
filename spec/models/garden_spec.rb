@@ -25,10 +25,14 @@ RSpec.describe Garden do
 
   describe '#plants' do
     it 'should provide plants in garden without duplicates and harvest less than 100 days' do
-      expect(@library_garden.plants).to include(@plant_2, @plant_3, @plant_4)
-      expect(@library_garden.plants.count(@plant_1)).to eq(1)
-      expect(@library_garden.plants).not_to include(@plant_5)
-      expect(@library_garden.plants).not_to include(@plant_6)
+      plant_names = @library_garden.plants.map do |plant|
+        plant.name
+      end
+
+      expect(plant_names).to include(@plant_2.name, @plant_3.name, @plant_4.name)
+      expect(plant_names.count(@plant_1.name)).to eq(1)
+      expect(plant_names).not_to include(@plant_5.name)
+      expect(plant_names).not_to include(@plant_6.name)
     end
   end
 end

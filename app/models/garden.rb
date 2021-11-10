@@ -3,8 +3,8 @@ class Garden < ApplicationRecord
 
   def plants
     plots.joins(:plants)
-         .select('plants.*')
+         .select('plants.name')
          .distinct
-         .where('plants.harvest < 100')
+         .where('plants.days_to_harvest < 100')
   end
 end
