@@ -34,6 +34,15 @@ RSpec.describe 'Plots index' do
         expect(page).to have_content(@plant_1.name)
         expect(page).to have_content(@plant_2.name)
       end
+
+      within "#plot-#{@plot_2.id}" do 
+        expect(page).to have_content(@plant_3.name)
+        expect(page).to have_content(@plant_4.name)
+
+        expect(page).not_to have_content(@plant_1.name)
+        expect(page).not_to have_content(@plant_2.name)
+      end
+
       within "#plot-#{@plot_18.id}" do 
         expect(page).to have_content(@plant_5.name)
       end
@@ -43,7 +52,8 @@ RSpec.describe 'Plots index' do
       within "#plot-#{@plot_2.id}" do 
         click_link "Remove #{@plant_3.name} from Plot ##{@plot_2.number}"
         expect(page).to_not have_content("#{@plant_3.name}")
-        expect(@plant_3).to exist
+        expect(@plant_3).not_to be_nil
       end
+      expect(current_path).to eq('/plots')
     end
 end
