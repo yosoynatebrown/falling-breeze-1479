@@ -12,25 +12,29 @@ RSpec.describe 'Garden show page' do
       
       @plant_3 = @plot_2.plants.create!(name: "Raspberry Bush", description: "Big and thorny", days_to_harvest: 60)
       @plant_4 = @plot_2.plants.create!(name: "Watermelon", description: "Juicy like that Juicy Fruit (TM)", days_to_harvest: 45)
-      @plant_5 = @plot_2.plants.create!(name: "Banana Tree", description: "Curvy", days_to_harvest: 101)
+      @plant_5 = @plot_2.plants.create!(name: "Banana Tree", description: "Curvy", days_to_harvest: 100)
 
-      @plot_2.plants << @plant_1
+      @plot_2.plants << @plant_3
 
       visit "/gardens/#{@library_garden.id}"
     end
 
     it "should have a list of plants that are included in the garden's plots" do
-      expect(page).to have_content(@plant_2.name)
+      expect(page).to have_content(@plant_1.name)
 
-      expect(page).to have_content(@plant_3.name)
+      expect(page).to have_content(@plant_2.name)
       expect(page).to have_content(@plant_4.name)
     end
 
     it "should not have any duplicate plants" do
-      expect(page).to have_content(@plant_1.name, count: 1)
+      expect(page).to have_content(@plant_3.name, count: 1)
     end
 
     it "should only have plants that take less than 100 days to harvest" do
       expect(page).not_to have_content(@plant_5.name)
+    end
+
+    it "should order plants by number of plots they are in" do
+      expect(@plant_3.name).to appear_before(@plant_1.name)
     end
 end
