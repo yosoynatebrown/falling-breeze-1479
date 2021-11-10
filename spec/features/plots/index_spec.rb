@@ -38,4 +38,12 @@ RSpec.describe 'Plots index' do
         expect(page).to have_content(@plant_5.name)
       end
     end
+
+    it 'should allow visitor to remove plants from plot (without deleting plant object)' do
+      within "#plot-#{@plot_2.id}" do 
+        click_link "Remove #{@plant_3.name} from Plot ##{@plot_2.number}"
+        expect(page).to_not have_content("#{@plant_3.name}")
+        expect(@plant_3).to exist
+      end
+    end
 end
